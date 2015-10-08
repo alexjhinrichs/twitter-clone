@@ -66,8 +66,17 @@ $(document).ready(function() {
 				+'</div>'
 			+'</div>'//.tweet
 			);
-
 		});
+		
+		$('.tweet-actions li').css('display', 'none');
+		$('.tweet').hover(function() {
+			$(this).find('.tweet-actions li').css('display', 'inline-block')}, 
+			function() {$(this).find('.tweet-actions li').css('display', 'none')
+		});
+		$('.stats').css('display', 'none');
+		$('.tweet').on('click', function() {
+			$('.stats').css('display', 'inline-block');
+		})
 
 
 
