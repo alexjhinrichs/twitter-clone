@@ -29,8 +29,8 @@ $(document).ready(function() {
 			'<div class="tweet">'
 				+ '<div class="content">'
 					+ '<img class="avatar" src="img/alagoon.jpg" />'
-					+'<strong class="fullname">My BFF</strong>'
-					+'<span class="username">@mybff</span>'
+					+'<strong class="fullname">Alex</strong>'
+					+'<span class="username">@myusername</span>'
 					+'<p class="tweet-text">' + tweetMessage + '</p>'
 					+'<div class="tweet-actions">'
 						+'<ul>'
@@ -56,7 +56,7 @@ $(document).ready(function() {
 							+'</div>'
 						+'</div>'
 						+'<div class="time">'
-							+'1:04 PM - 19 Sep 13'
+							+jQuery.timeago(new Date())
 						+'</div>'
 					+'</div>'
 					+'<div class="reply">'
@@ -73,10 +73,19 @@ $(document).ready(function() {
 			$(this).find('.tweet-actions li').css('display', 'inline-block')}, 
 			function() {$(this).find('.tweet-actions li').css('display', 'none')
 		});
+
 		$('.stats').css('display', 'none');
 		$('.tweet').on('click', function() {
-			$('.stats').css('display', 'inline-block');
+			$('.stats').slideDown('slow').css('display', 'inline-block');
 		})
+
+		$('.tweet-actions ul li').on('click', function() {
+			$(this).remove('.icon');
+			var icon = $(this).find('.icon');
+			$(this).closest('.tweet').prepend(icon);
+		});
+
+
 
 
 
